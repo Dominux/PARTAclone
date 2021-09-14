@@ -1,37 +1,54 @@
-package homework
+package entity
 
 import (
-	"./answer"
-	"./exercise"
-	"./points"
-	"./users/user"
+	"github.com/SPARTAclone/SPARTA/internal/users/entity"
 )
 
-
 type Homework struct {
-	student *user.User
-	exercise *exercise.Exercise
-	answers []*answer.Answer
-	points points.Points
+	student *User
+	exercise *Exercise
+	answers []*Answer
+	points Points
 	isGraded bool
 }
 
 // Auto check homework's questions by comparing 
 // it's right answers with given by student 
 func (h *Homework) autoCheck() {
-	for _, answer := range h.answers {
+	for _, answer := range h.Answers {
 
-		isAnswerRight, err := answer.question.isAnswerRight(answer)
+		isAnswerRight, err := answer.Question.IsAnswerRight(answer)
 
 		if err != nil {
 			continue
 		}
 
 		if isAnswerRight {
-			answer.isRight = true
-			h.points += answer.points
+			answer.IsRight = true
+			h.Points += answer.Points
 		} else {
 			answer.isRight = false
 		}
 	}
+}
+
+
+func CreateHomework(
+	student *User
+	exercise *Exercise
+	answers []*Answer
+	points Points
+	isGraded bool
+) (*Homework, error) {
+
+	h := *Homework{
+		student,
+		exercise,
+		answers,
+		points,
+		isGraded,
+	}
+
+	// TODO
+
 }

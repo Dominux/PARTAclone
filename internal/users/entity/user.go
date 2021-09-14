@@ -1,22 +1,17 @@
-package user
-
-import (
-	"./group"
-	"./permission"
-)
+package entity
 
 
 type User struct {
-	id uint
-	firstname string
-	surname string
-	lastname string
-	groups []*group.Group
+	Id uint
+	Firstname string
+	Surname string
+	Lastname string
+	Groups []*Group
 }
 
-func (u User) hasPerm(perm permission.Permission) bool {
-	for _, g := range u.groups {
-		for _, p := range g.permissions {
+func (u User) hasPerm(perm Permission) bool {
+	for _, g := range u.Groups {
+		for _, p := range g.Permissions {
 			if p == perm {
 				return true
 			}

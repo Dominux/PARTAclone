@@ -1,9 +1,7 @@
-package group
-
-import "./permission"
+package entity
 
 
 type Group struct {
-	name string
-	permissions []*permission.Permission
+	Name string
+	Permissions []*Permission
 }

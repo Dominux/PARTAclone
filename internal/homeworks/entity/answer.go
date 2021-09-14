@@ -1,28 +1,27 @@
-package answer
+package entity
 
 import (
 	"errors"
 
-	"./question"
-	"./users/user"
+	"github.com/SPARTAclone/SPARTA/internal/users/entity"
 )
 
 
 type Answer struct {
-	user *user.User
-	question *question.Question
-	answer string
-	isRight bool
+	User *user.User
+	Question *question.Question
+	Answer string
+	IsRight bool
 }
 
 // Check whether answer is right or not
 func (a Answer) isAnswerRight() (bool, error) {
-	if len(a.question.rightAnswers) == 0 {
+	if len(a.Question.RightAnswers) == 0 {
 		return false, errors.New("There is no one right answer")
 	}
 
-	for _, rightAnswer := range a.question.rightAnswers {
-		if a.answer == rightAnswer.answer {
+	for _, rightAnswer := range a.Question.RightAnswers {
+		if a.answer == rightAnswer.Answer {
 			return true, nil
 		}
 	}

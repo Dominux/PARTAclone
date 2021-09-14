@@ -1,4 +1,4 @@
-package points
+package entity
 
 
 type Points uint8

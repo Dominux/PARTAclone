@@ -1,4 +1,4 @@
-package permission
+package entity
 
 
 type Permission string
