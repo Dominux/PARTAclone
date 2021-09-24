@@ -12,7 +12,7 @@ type User struct {
 func (u User) hasPerm(perm Permission) bool {
 	for _, g := range u.Groups {
 		for _, p := range g.Permissions {
-			if p == perm {
+			if *p == perm {
 				return true
 			}
 		}

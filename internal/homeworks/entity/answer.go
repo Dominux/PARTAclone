@@ -8,8 +8,8 @@ import (
 
 
 type Answer struct {
-	User *user.User
-	Question *question.Question
+	User *entity.User
+	Question *Question
 	Answer string
 	IsRight bool
 }
@@ -21,7 +21,7 @@ func (a Answer) isAnswerRight() (bool, error) {
 	}
 
 	for _, rightAnswer := range a.Question.RightAnswers {
-		if a.answer == rightAnswer.Answer {
+		if a.Answer == rightAnswer.Answer {
 			return true, nil
 		}
 	}
